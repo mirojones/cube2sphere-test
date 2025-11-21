@@ -1,25 +1,22 @@
 on:
-  push:
-    branches:
-    - main
   workflow_dispatch:
+    inputs:
+      id:
+        description: Bubbli ID (path of share URL)
+        required: true
 
 jobs:
   convert:
-    name: convert cubemap to equirectangular
+    name: Convert cubemap to equirectangular
     runs-on: ubuntu-22.04
     steps:
     - name: Setup Blender
-      # You may pin to the exact commit or the version.
-      # uses: Moguri/setup-blender@9a86d901000390c626a911b644b4e69aa7c87558
       uses: Moguri/setup-blender@v1
       with:
-        # Version of Blender to use, using SemVer's version syntax
         blender-version: "5.0.0"
     - name: Setup Python
       uses: actions/setup-python@v6.0.0
       with:
-        # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
         python-version: "^3.8.0"
     - name: Install cube2sphere
       run: pip install cube2sphere
