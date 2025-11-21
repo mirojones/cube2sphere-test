@@ -28,11 +28,16 @@ jobs:
       run: cube2sphere stitched_pz.jpg stitched_nz.jpg stitched_nx.jpg stitched_px.jpg stitched_py.jpg stitched_ny.jpg -fJPG -V
     - name: Commit changes
       run: |
-        git config --global user.email "no-reply@example.com"
         git config --global user.name "GitHub Actions"
-        git add out.jpg
-        git commit -m "Output converted equirectangular image"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git config --global user.email "no-reply@example.com"
+
+        # stage any file changes to be committed
+        git add .
+
+        # make commit with staged changes
+        git commit -m 'files changed'
+
+        # push the commit back up to source GitHub repository
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
