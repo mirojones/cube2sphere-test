@@ -28,7 +28,7 @@ jobs:
       run: cube2sphere stitched_pz.jpg stitched_nz.jpg stitched_nx.jpg stitched_px.jpg stitched_py.jpg stitched_ny.jpg -fJPG -V
     - name: Commit changes
       run: |
-        git config --global user.email "no-reply@github.com"
+        git config --global user.email "no-reply@example.com"
         git config --global user.name "Automatic action"
         git add out.jpg
         git commit -m "Output converted equirectangular image"
