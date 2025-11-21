@@ -21,4 +21,13 @@ jobs:
     - name: Install cube2sphere
       run: pip install cube2sphere
     - name: Download files
-      run: wget https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg
+      run: |
+        wget
+        -o front.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_pz.jpg
+        -o back.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nz.jpg
+        -o left.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg
+        -o right.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_px.jpg
+        -o top.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_py.jpg
+        -o bottom.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_ny.jpg
+    - name: Convert with cube2sphere
+      run: cube2sphere -ocubemap -fJPG front.jpg back.jpg right.jpg left.jpg top.jpg bottom.jpg
