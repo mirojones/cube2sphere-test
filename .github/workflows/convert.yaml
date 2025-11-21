@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  convert:
+    name: convert cubemap to equirectangular
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Setup Blender
+      # You may pin to the exact commit or the version.
+      # uses: Moguri/setup-blender@9a86d901000390c626a911b644b4e69aa7c87558
+      uses: Moguri/setup-blender@v1
+      with:
+        # Version of Blender to use, using SemVer's version syntax
+        blender-version: 5.0
+          
