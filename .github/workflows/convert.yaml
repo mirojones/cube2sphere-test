@@ -32,7 +32,7 @@ jobs:
         git config --global user.name "Automatic action"
         git add out.jpg
         git commit -m "Output converted equirectangular image"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB\_TOKEN }}@github.com/${{ github.repository }}
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git push
       env:
-        GITHUB\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
