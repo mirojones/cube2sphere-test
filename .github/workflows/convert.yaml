@@ -20,3 +20,5 @@ jobs:
         python-version: "^3.8.0"
     - name: Install cube2sphere
       run: pip install cube2sphere
+    - name: Help
+      run: cube2sphere -h
