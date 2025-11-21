@@ -20,5 +20,7 @@ jobs:
         python-version: "^3.8.0"
     - name: Install cube2sphere
       run: pip install cube2sphere
-    - name: Help
-      run: cube2sphere -h
+    - name: Intall Python requests
+      run: pip install requests
+    - name: Download files
+      run: wget https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg
