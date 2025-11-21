@@ -10,6 +10,8 @@ jobs:
     name: Convert cubemap to equirectangular
     runs-on: ubuntu-22.04
     steps:
+    - name: Help
+      run: wget --help
     - name: Setup Blender
       uses: Moguri/setup-blender@v1
       with:
