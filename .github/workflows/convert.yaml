@@ -30,4 +30,4 @@ jobs:
         -o top.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_py.jpg
         -o bottom.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_ny.jpg
     - name: Convert with cube2sphere
-      run: cube2sphere -ocubemap -fJPG front.jpg back.jpg right.jpg left.jpg top.jpg bottom.jpg
+      run: cube2sphere front.jpg back.jpg right.jpg left.jpg top.jpg bottom.jpg -ocubemap -fJPG
