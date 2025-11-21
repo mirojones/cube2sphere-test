@@ -23,13 +23,21 @@ jobs:
     - name: Install cube2sphere
       run: pip install cube2sphere
     - name: Download files
-      run: |
-        wget
-        -o front.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_pz.jpg
-        -o back.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nz.jpg
-        -o left.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg
-        -o right.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_px.jpg
-        -o top.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_py.jpg
-        -o bottom.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_ny.jpg
+      run: >
+        wget 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_pz.jpg 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nz.jpg 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_px.jpg 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_py.jpg 
+          https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_ny.jpg 
     - name: Convert with cube2sphere
-      run: cube2sphere front.jpg back.jpg right.jpg left.jpg top.jpg bottom.jpg -ocubemap -fJPG
+      run: >
+        cube2sphere 
+          stitched_pz.jpg 
+          stitched_nz.jpg 
+          stitched_nx.jpg 
+          stitched_px.jpg 
+          stitched_py.jpg 
+          stitched_ny.jpg 
+          -ocubemap -fJPG
