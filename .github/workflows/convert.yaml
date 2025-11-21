@@ -15,5 +15,5 @@ jobs:
       uses: Moguri/setup-blender@v1
       with:
         # Version of Blender to use, using SemVer's version syntax
-        blender-version: 5.0
+        blender-version: "5.0.0"
           
