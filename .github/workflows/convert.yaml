@@ -25,4 +25,14 @@ jobs:
     - name: Download files
       run: wget https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_pz.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nz.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_nx.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_px.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_py.jpg https://d39cwcjmzdw2iw.cloudfront.net/${{ inputs.id }}/stitched_ny.jpg
     - name: Convert with cube2sphere
-      run: cube2spherestitched_pz.jpg stitched_nz.jpg stitched_nx.jpg stitched_px.jpg stitched_py.jpg stitched_ny.jpg -ocubemap -fJPG -V
+      run: cube2sphere stitched_pz.jpg stitched_nz.jpg stitched_nx.jpg stitched_px.jpg stitched_py.jpg stitched_ny.jpg -fJPG -V
+    - name: Commit changes
+      run: |
+        git config --global user.email "no-reply@github.com"
+        git config --global user.name "Automatic action"
+        git add out.jpg
+        git commit -m "Output converted equirectangular image"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB\_TOKEN }}@github.com/${{ github.repository }}
+        git push
+      env:
+        GITHUB\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
